@@ -28,9 +28,9 @@ public class order_3 extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseDatabase Fbase;
     private String userId;
-    EditText e1,e2,e3;
+    EditText e1,e2,e3,e7;
     ListView LV;
-    Button b4;
+    Button b4,b6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,16 +44,27 @@ public class order_3 extends AppCompatActivity {
         e1=(EditText)findViewById(R.id.editText3);
         e2=(EditText)findViewById(R.id.editText4);
         e3=(EditText)findViewById(R.id.editText6);
-
+        e7 = (EditText)findViewById(R.id.editText7);
         b4 = (Button)findViewById(R.id.button4);
+        b6 = (Button)findViewById(R.id.button6);
 
+
+        b6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                finish();
+                Intent i = new Intent(getApplicationContext(),LaundryMain.class);
+                i.putExtra("key","Order");
+                startActivity(i);
+            }
+        });
         b4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 dref.child(userId).removeValue();
-
-
+                finish();
                 Intent i = new Intent(getApplicationContext(),LaundryMain.class);
                 startActivity(i);
             }
@@ -105,6 +116,11 @@ public class order_3 extends AppCompatActivity {
             e1.setText(dataSnapshot.child("Address").getValue(String.class));
             e2.setText(dataSnapshot.child("Delivery_Date").getValue(String.class));
             e3.setText(dataSnapshot.child("Time").getValue(String.class));
+            e7.setText(dataSnapshot.child("Total Price").getValue(String.class));
+        e1.setEnabled(false);
+        e2.setEnabled(false);
+        e3.setEnabled(false);
+        e7.setEnabled(false);
 
 
     }

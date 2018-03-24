@@ -25,11 +25,15 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class Order_2 extends AppCompatActivity implements NumberPicker.OnValueChangeListener {
 
-    TextView t1,t2,t3;
+    TextView t1,t2,t3,t28;
     NumberPicker n1,n2,n3;
     EditText e1;
     Button b1;
+    int q1,q2,q3;
+
     RadioGroup rg;
+    int flag,flag2;
+
     RadioButton r1,r2,r3,radioButton;
     DatabaseReference mDatabase;
     @Override
@@ -41,6 +45,7 @@ public class Order_2 extends AppCompatActivity implements NumberPicker.OnValueCh
         t1 = (TextView)findViewById(R.id.textView10);
         t2 = (TextView)findViewById(R.id.textView11);
         t3 = (TextView)findViewById(R.id.textView13);
+        t28 = (TextView)findViewById(R.id.textView28);
         b1 = (Button)findViewById(R.id.button3);
         e1 = (EditText)findViewById(R.id.editText8);
         r1= (RadioButton)findViewById(R.id.option1);
@@ -75,6 +80,9 @@ public class Order_2 extends AppCompatActivity implements NumberPicker.OnValueCh
                 String tw = t1.getText().toString().trim();
                 String ps = t2.getText().toString().trim();
                 String dc = t3.getText().toString().trim();
+                int t = q1+q2+q3+flag;
+
+                String total =Integer.toString(t);
 
                 DatabaseReference usersRef = ref.child("customers");
                 FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser() ;
@@ -84,6 +92,8 @@ public class Order_2 extends AppCompatActivity implements NumberPicker.OnValueCh
                 usersRef.child(user).child("Total_Weight").setValue(tw);
                 usersRef.child(user).child("Quantity").setValue(ps);
                 usersRef.child(user).child("Dry Clean").setValue(dc);
+                usersRef.child(user).child("Total Price").setValue(total);
+
 
                 Toast.makeText(getApplicationContext(),"Saved data",Toast.LENGTH_SHORT).show();
 
@@ -100,24 +110,52 @@ public class Order_2 extends AppCompatActivity implements NumberPicker.OnValueCh
         int radioId = rg.getCheckedRadioButtonId();
 
         radioButton = (RadioButton)findViewById(radioId);
-        e1.setText("Your choice: " + radioButton.getText());
+        switch (radioId){
+            case R.id.option1:
+                t28.setText("Extra Cost : " + 0);
+                flag=0;
+                break;
+            case R.id.option2:
+                t28.setText("Extra Cost : " + 20);
+                flag=20;
+                break;
+            case R.id.option3:
+                t28.setText("Extra Cost : " + 40);
+                flag=40;
+                break;
+        }
+        e1.setText("" + radioButton.getText());
 
     }
 
 
     @Override
     public void onValueChange(NumberPicker numberPicker, int i, int i1) {
-
+            flag2=0;
         if(numberPicker.getId()==R.id.numberPicker5){
-            t1.setText(" "+ i1);
+
+            flag2 = flag2 + i1*50;
+            t1.setText(i1+"x "+50+"= Rs"+(i1*50));
+            q1=flag2;
+
         }
 
         if(numberPicker.getId()==R.id.numberPicker6){
-            t2.setText(" "+ i1);
+            flag2 = flag2+  i1*15;
+            t2.setText(i1+"x "+15+"=Rs"+(i1*15));
+            q2=flag2;
+
         }
         if(numberPicker.getId()==R.id.numberPicker7){
-            t3.setText(" "+ i1);
+
+            flag2 = flag2 + i1*40;
+            t3.setText(i1+"x "+40+"=Rs"+(i1*40));
+            q3=flag2;
+
+
         }
+
+
 
     }
     public boolean onCreateOptionsMenu(Menu menu) {

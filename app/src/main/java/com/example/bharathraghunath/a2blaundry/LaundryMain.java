@@ -20,15 +20,34 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 
 public class LaundryMain extends AppCompatActivity {
 
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
+
+    static EditText e1,e2,e3,e12;
+    static TextView t1,t2,t3,t4,t5,t20;
+    static private DatabaseReference dref;
+    static private FirebaseAuth mAuth;
+    static private FirebaseDatabase Fbase;
+    static private String userId;
+
+   //get the data by storing it in SharedPreferences.
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +56,7 @@ public class LaundryMain extends AppCompatActivity {
 
         Toolbar tbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(tbar);
+
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -49,7 +69,10 @@ public class LaundryMain extends AppCompatActivity {
         tabLayout.setupWithViewPager(mViewPager);
 
 
+
+
     }
+
 
 
     @Override
@@ -106,6 +129,56 @@ public class LaundryMain extends AppCompatActivity {
             }
             else if(getArguments().getInt(ARG_SECTION_NUMBER)==2){
                 View rootView = inflater.inflate(R.layout.fragment_section_2, container, false);
+
+                e1 = (EditText)rootView.findViewById(R.id.editText11);
+                e12 = (EditText)rootView.findViewById(R.id.editText12);
+                e2 = (EditText)rootView.findViewById(R.id.editText9);
+                e3 = (EditText)rootView.findViewById(R.id.editText10);
+                dref = FirebaseDatabase.getInstance().getReference().child("customers");
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                userId = user.getUid().toString();
+                DatabaseReference dref_c = dref.child(userId);
+                t1=(TextView)rootView.findViewById(R.id.textView12);
+                t2=(TextView)rootView.findViewById(R.id.textView14);
+                t3=(TextView)rootView.findViewById(R.id.textView18);
+                t20=(TextView)rootView.findViewById(R.id.textView20);
+                t4=(TextView)rootView.findViewById(R.id.textView21);
+                t5=(TextView)rootView.findViewById(R.id.textView22);
+                t1.setText("No Order placed");
+                String s = getActivity().getIntent().getStringExtra("key");
+                if((s!=null && s.equals("Order") || userId !=null)){
+                    dref_c.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            t1.setText("Your Order accepted");
+                            t2.setVisibility(View.VISIBLE);
+                            t2.setText("Order summary :");
+                            t20.setVisibility(View.VISIBLE);
+                            t20.setText("Estimated Price :");
+                            t3.setVisibility(View.VISIBLE);
+                            t3.setText("Address :");
+                            t4.setVisibility(View.VISIBLE);
+                            t4.setText("Date :");
+                            t5.setVisibility(View.VISIBLE);
+                            t5.setText("Time :");
+                            e1.setVisibility(View.VISIBLE);
+                            e2.setVisibility(View.VISIBLE);
+                            e3.setVisibility(View.VISIBLE);
+                            e12.setVisibility(View.VISIBLE);
+                            showdata(dataSnapshot);
+                            e1.setEnabled(false);
+                            e2.setEnabled(false);
+                            e3.setEnabled(false);
+                            e12.setEnabled(false);
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+                }
                 return rootView;
             }
             else {
@@ -116,6 +189,18 @@ public class LaundryMain extends AppCompatActivity {
 
 
         }
+        private void showdata(DataSnapshot dataSnapshot) {
+
+            e1.setText(dataSnapshot.child("Address").getValue(String.class));
+            e2.setText(dataSnapshot.child("Delivery_Date").getValue(String.class));
+            e3.setText(dataSnapshot.child("Time").getValue(String.class));
+            e12.setText(dataSnapshot.child("Total Price").getValue(String.class));
+
+
+
+        }
+
+
     }
 
     /**
@@ -156,10 +241,15 @@ public class LaundryMain extends AppCompatActivity {
     public void buttonClick(View v) {
         switch(v.getId()) {
             case R.id.button5:
+                finish();
                 Intent myIntent = new Intent(LaundryMain.this, Order_1.class);
-
+                myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(myIntent);
                 break;
+            case R.id.button6:
+                //
         }
     }
+
+
 }

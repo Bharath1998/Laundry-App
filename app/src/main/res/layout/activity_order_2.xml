@@ -100,21 +100,20 @@
         android:hint="Select Option"
         android:inputType="textPersonName"
         android:text=""
-        android:layout_alignBottom="@+id/radioGroup5"
+        android:layout_below="@+id/toolbar_2"
         android:layout_alignRight="@+id/numberPicker6"
         android:layout_alignEnd="@+id/numberPicker6"
-        android:layout_marginBottom="27dp" />
+        android:layout_marginTop="45dp" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/editText8"
-        android:layout_alignLeft="@+id/editText8"
-        android:layout_alignStart="@+id/editText8"
-        android:layout_marginBottom="50dp"
         android:text="Delivery Speed"
-        android:textSize="28dp" />
+        android:textSize="28dp"
+        android:layout_below="@+id/toolbar_2"
+        android:layout_alignLeft="@+id/editText8"
+        android:layout_alignStart="@+id/editText8" />
 
     <TextView
         android:id="@+id/textView4"
@@ -165,7 +164,7 @@
         android:layout_alignBottom="@+id/textView10"
         android:layout_alignLeft="@+id/textView8"
         android:layout_alignStart="@+id/textView8"
-        android:text="TextView" />
+        android:text="" />
 
     <TextView
         android:id="@+id/textView13"
@@ -174,7 +173,7 @@
         android:layout_alignEnd="@+id/textView9"
         android:layout_alignRight="@+id/textView9"
         android:layout_alignTop="@+id/textView11"
-        android:text="TextView" />
+        android:text="" />
 
     <Button
         android:id="@+id/button3"
@@ -183,7 +182,19 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:text="Button" />
+        android:text="BOOK!!" />
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText8"
+        android:layout_marginEnd="23dp"
+        android:layout_marginRight="23dp"
+        android:layout_marginTop="11dp"
+        android:layout_toLeftOf="@+id/numberPicker6"
+        android:layout_toStartOf="@+id/numberPicker6"
+        android:text="" />
 
 
 </RelativeLayout>
