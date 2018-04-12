@@ -5,7 +5,8 @@
     android:id="@+id/numberpicker1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.bharathraghunath.a2blaundry.Order_2">
+    tools:context="com.example.bharathraghunath.a2blaundry.Order_2"
+    android:background="@drawable/hj">
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
@@ -98,6 +99,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Select Option"
+        android:textColor="#9400d3"
         android:inputType="textPersonName"
         android:text=""
         android:layout_below="@+id/toolbar_2"
@@ -111,6 +113,7 @@
         android:layout_height="wrap_content"
         android:text="Delivery Speed"
         android:textSize="28dp"
+        android:textColor="#9400d3"
         android:layout_below="@+id/toolbar_2"
         android:layout_alignLeft="@+id/editText8"
         android:layout_alignStart="@+id/editText8" />
@@ -123,7 +126,8 @@
         android:layout_alignEnd="@+id/numberPicker5"
         android:layout_alignRight="@+id/numberPicker5"
         android:layout_marginBottom="65dp"
-        android:text="Total Weight" />
+        android:text="Total Weight"
+        android:textColor="#9400d3"/>
 
     <TextView
         android:id="@+id/textView8"
@@ -133,7 +137,8 @@
         android:layout_alignBottom="@+id/textView4"
         android:layout_alignLeft="@+id/numberPicker6"
         android:layout_alignStart="@+id/numberPicker6"
-        android:text="Peices" />
+        android:text="Peices"
+        android:textColor="#9400d3"/>
 
     <TextView
         android:id="@+id/textView9"
@@ -142,7 +147,8 @@
         android:layout_alignBottom="@+id/textView8"
         android:layout_alignLeft="@+id/numberPicker7"
         android:layout_alignStart="@+id/numberPicker7"
-        android:text="Dry Clean" />
+        android:text="Dry Clean"
+        android:textColor="#9400d3"/>
 
     <TextView
         android:id="@+id/textView10"
@@ -154,7 +160,8 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="22dp"
-        android:text="" />
+        android:text=""
+        android:textColor="#9400d3"/>
 
     <TextView
         android:id="@+id/textView11"
@@ -164,7 +171,8 @@
         android:layout_alignBottom="@+id/textView10"
         android:layout_alignLeft="@+id/textView8"
         android:layout_alignStart="@+id/textView8"
-        android:text="" />
+        android:text=""
+        android:textColor="#9400d3"/>
 
     <TextView
         android:id="@+id/textView13"
@@ -173,7 +181,8 @@
         android:layout_alignEnd="@+id/textView9"
         android:layout_alignRight="@+id/textView9"
         android:layout_alignTop="@+id/textView11"
-        android:text="" />
+        android:text=""
+        android:textColor="#9400d3"/>
 
     <Button
         android:id="@+id/button3"
@@ -182,7 +191,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:text="BOOK!!" />
+        android:text="BOOK!!"
+        />
 
     <TextView
         android:id="@+id/textView28"
@@ -194,7 +204,8 @@
         android:layout_marginTop="11dp"
         android:layout_toLeftOf="@+id/numberPicker6"
         android:layout_toStartOf="@+id/numberPicker6"
-        android:text="" />
+        android:text=""
+        android:textColor="#9400d3"/>
 
 
 </RelativeLayout>

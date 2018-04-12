@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="layout.section_2"
-    android:id="@+id/Frag2">
+    android:id="@+id/Frag2"
+    android:background="@drawable/hj">
 
 
     <RelativeLayout
@@ -19,6 +20,7 @@
             android:layout_below="@+id/editText11"
             android:layout_marginTop="43dp"
             android:ems="10"
+            android:textColor="#9400d3"
             android:inputType="textPersonName"
             android:text=""
             android:visibility="invisible" />
@@ -32,6 +34,7 @@
             android:layout_below="@+id/editText9"
             android:layout_marginTop="42dp"
             android:ems="10"
+            android:textColor="#9400d3"
             android:inputType="textPersonName"
             android:text=""
             android:visibility="invisible" />
@@ -44,6 +47,7 @@
             android:layout_alignStart="@+id/editText9"
             android:layout_centerVertical="true"
             android:ems="10"
+            android:textColor="#9400d3"
             android:inputType="textPersonName"
             android:text=""
             android:visibility="invisible" />
@@ -56,6 +60,7 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="67dp"
+            android:textColor="#9400d3"
             android:text="YOUR ORDER IS ACCPETED"
             android:textSize="28dp" />
 
@@ -69,6 +74,7 @@
             android:layout_marginTop="57dp"
             android:text="ORDER SUMMARY"
             android:textSize="24dp"
+            android:textColor="#9400d3"
             android:visibility="invisible" />
 
         <TextView
@@ -80,6 +86,7 @@
             android:layout_alignLeft="@+id/textView18"
             android:layout_alignStart="@+id/textView18"
             android:text="TextView"
+            android:textColor="#9400d3"
             android:visibility="invisible" />
 
         <TextView
@@ -91,6 +98,7 @@
             android:layout_alignLeft="@+id/textView21"
             android:layout_alignStart="@+id/textView21"
             android:text="TextView"
+            android:textColor="#9400d3"
             android:visibility="invisible" />
 
         <TextView
@@ -100,6 +108,7 @@
             android:layout_alignBaseline="@+id/editText11"
             android:layout_alignBottom="@+id/editText11"
             android:text="TextView"
+            android:textColor="#9400d3"
             android:visibility="invisible"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
@@ -113,6 +122,7 @@
             android:layout_below="@+id/editText10"
             android:layout_marginTop="19dp"
             android:ems="10"
+            android:textColor="#9400d3"
             android:inputType="textPersonName"
             android:text=""
             android:visibility="invisible" />
@@ -124,6 +134,7 @@
             android:layout_alignTop="@+id/editText12"
             android:layout_marginTop="11dp"
             android:text="TextView"
+            android:textColor="#9400d3"
             android:visibility="invisible" />
 
 
